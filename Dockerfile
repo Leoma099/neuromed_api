@@ -24,9 +24,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install dependencies
 RUN composer install --no-dev --no-scripts
 
-# **Run migrations**
-RUN php artisan migrate --force
-
 # Expose port
 EXPOSE 9000
 
