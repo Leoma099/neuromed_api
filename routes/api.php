@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ResponseController;
+use App\Http\Controllers\BotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,6 @@ Route::get('/messages', [MessageController::class, 'index']);
 Route::get('/conversations/{conversation_id}/messages', [MessageController::class, 'getMessages']);
 Route::post('/send-message', [MessageController::class, 'sendMessage']);
 Route::delete('/conversations/{id}', [MessageController::class, 'destroy']);
+
+// routes/api.php
+Route::post('/bot-reply', [BotController::class, 'getReply']);
