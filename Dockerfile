@@ -24,8 +24,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install dependencies
 RUN composer install --no-dev --no-scripts
 
+# Copy the entrypoint script and make it executable
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # Expose port
 EXPOSE 9000
 
-# Run the Laravel server (make sure this matches your start command)
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=9000"]
+# Set the entrypoint to use our script
+ENTRYPOINT ["entrypoint.sh"]
