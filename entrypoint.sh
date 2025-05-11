@@ -6,7 +6,7 @@ sleep 10  # This sleep is to wait for the DB to be ready (you can adjust the tim
 
 # Run migrations and optimize the application
 echo "Running migrations and optimizations..."
-php artisan migrate --force
+php artisan migrate --force --no-interaction
 php artisan optimize
 
 # Start the Laravel development server
