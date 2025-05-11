@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: laravel-api
+    env: docker
+    buildCommand: 'docker build -t laravel-api .'  # Build the Docker image using the Dockerfile
+    startCommand: 'docker run -p 80:9000 laravel-api'  # Run the container and expose port 9000 to 80
+    envVars:
+      - key: APP_KEY
+        value: 'base64:WLhaXm6pr89i9LgOKz5bnxqwgI1Gv4MeUGNRlggpVkU='
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: 'false'
+      - key: APP_URL
+        value: 'https://api-neuromedai.onrender.com'
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        value: 'sql308.infinityfree.com'
+      - key: DB_PORT
+        value: '3306'
+      - key: DB_DATABASE
+        value: 'if0_38943675_neuromed_db'
+      - key: DB_USERNAME
+        value: 'if0_38943675'
+      - key: DB_PASSWORD
+        value: '2ZvwAD4f1KsK'
+      - key: MAIL_MAILER
+        value: smtp
+      - key: MAIL_HOST
+        value: mailhog
+      - key: MAIL_PORT
+        value: '1025'
+
+    # Optional: Set up build and deploy hooks if needed.
+    # build:
+    #   command: 'composer install'
+    # deploy:
+    #   command: 'php artisan migrate --force && php artisan cache:clear'
+
+    # Uncomment this to add a custom domain.
+    # customDomains:
+    #   - yourdomain.com
